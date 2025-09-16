@@ -7,7 +7,7 @@
         Блогикум
       </a>
       {% with request.resolver_match.view_name as view_name %}
-        <ul class="nav  nav-pills">
+        <ul class="nav nav-pills">
           <li class="nav-item">
             <a class="nav-link {% if view_name == 'pages:about' %} text-white {% endif %}" href="{% url 'pages:about' %}">
               О проекте
@@ -25,18 +25,26 @@
               <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
                   href="{% url 'blog:profile' user.username %}">{{ user.username }}</a></button>
               <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
-                  href="{% url 'logout' %}">Выйти</a></button>
+                  href="{% url 'users:logout' %}">Выйти</a></button>
             </div>
           {% else %}
             <div class="btn-group" role="group" aria-label="Basic outlined example">
               <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
-                  href="{% url 'login' %}">Войти</a></button>
+                  href="{% url 'users:login' %}">Войти</a></button>
               <button type="button" class="btn btn-outline-primary"><a class="text-decoration-none text-reset"
-                  href="{% url 'registration' %}">Регистрация</a></button>
+                  href="{% url 'users:registration' %}">Регистрация</a></button>
             </div>
           {% endif %}
         </ul>
       {% endwith %}
     </div>
+  </nav>
+  <nav>
+    <ul>
+        <li><a href="{% url 'pages:about' %}">О нас</a></li>
+        <li><a href="{% url 'pages:rules' %}">Правила</a></li>
+        <li><a href="{% url 'pages:contacts' %}">Контакты</a></li>
+        <li><a href="{% url 'pages:help' %}">Помощь</a></li>
+    </ul>
   </nav>
 </header>

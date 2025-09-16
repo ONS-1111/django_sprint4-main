@@ -1,33 +1,25 @@
-from django.contrib import admin
-from django.urls import path, include
+from typing import List
+
 from django.conf import settings
 from django.conf.urls.static import static
-from django.contrib.auth.forms import UserCreationForm
-from django.views.generic.edit import CreateView
+from django.contrib import admin
+from django.urls import URLPattern, include, path
 
-# from blog.forms import CustomUserCreationForm
-
+handler403 = 'pages.views.permission_denied'
 handler404 = 'pages.views.page_not_found'
 handler500 = 'pages.views.server_error'
 
-urlpatterns = [
+urlpatterns: List[URLPattern] = [
+    path('pages/', include('pages.urls', namespace='pages')),
+    path('', include('users.urls', namespace='users')),
     path('', include('blog.urls', namespace='blog')),
     path('auth/', include('django.contrib.auth.urls')),
-    path('pages/', include('pages.urls', namespace='pages')),
     path('admin/', admin.site.urls),
-    path(
-        'auth/registration/',
-        CreateView.as_view(
-            template_name='registration/registration_form.html',
-            form_class=UserCreationForm,
-        ),
-        name='registration',
-    ),
 ]
-
 
 if settings.DEBUG:
     import debug_toolbar
+
     urlpatterns += (path('__debug__/', include(debug_toolbar.urls)),)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
