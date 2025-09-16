@@ -18,7 +18,7 @@
 
 ## Установка и запуск
 ```bash
-git clone https://github.com/Gurgunok/django_sprint_4.0.git
+git clone https://github.com/ONS-1111/django_sprint4-main
 cd django_sprint4-main
 
 # Виртуальное окружение
