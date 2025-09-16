@@ -32,9 +32,9 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-### Инициализация данных (необязательно)
+### Инициализация данных
 ```bash
-python manage.py loaddata ../db.json
+python manage.py loaddata db.json
 ```
 
 ## Основные маршруты
@@ -60,9 +60,6 @@ python manage.py loaddata ../db.json
 - Картинки загружаются в `media/img/`, отдаются по `MEDIA_URL`.
 - Отправка почты — файловый бэкенд: письма сохраняются в `sent_emails/` (папка исключена из Git в `.gitignore`).
 
-## Тесты
-```bash
-pytest -q
 ```
 
 ## Автор
