@@ -147,7 +147,8 @@ class BlogIndexListView(ListView):
     context_object_name = 'post_list'
     paginate_by = PAGINATED_BY
 
-    queryset = filter_published_posts(Post.objects)
+    def get_queryset(self):
+        return filter_published_posts(Post.objects.all())
 
 
 class BlogCategoryListView(ListView):
